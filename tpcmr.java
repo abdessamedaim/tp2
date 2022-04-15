@@ -65,7 +65,7 @@ public class CameraSurveillance {
 		ma.ajoutArete(45, 47);
 		ma.ajoutArete(47, 48);
 		
-		// 46,46 parceque l'emplacement 46 doit avoir une caméra
+		// 46,46 parceque l'emplacement 46 doit avoir une camÃ©ra
 		ma.ajoutArete(46, 46);
 		
 		//System.out.println(ma.toString());
@@ -77,7 +77,7 @@ public class CameraSurveillance {
 			int n = 49;
 			IloCplex simplexe = new IloCplex ();
 			
-			// déclaration des Variables de décision de type boolean (2ème contrainte)
+			// dÃ©claration des Variables de dÃ©cision de type boolean (2Ã¨me contrainte)
 			IloNumVar[] place = new IloNumVar[n];
 			
 			for (int i=0;i<n;i++){
@@ -88,17 +88,17 @@ public class CameraSurveillance {
 			// declaration de la fonction objectif
 			IloLinearNumExpr objectif = simplexe.linearNumExpr();
 			
-			// définition des coefficients de la fonction objectif
+			// dÃ©finition des coefficients de la fonction objectif
 			for (int i=0;i<n;i++){
 				objectif.addTerm(1, place[i]);
 			}
 			
 			
-			// Définir le type d'optimisation de la fonction (min)
+			// DÃ©finir le type d'optimisation de la fonction (min)
 			simplexe.addMinimize(objectif);
 			
 			
-			// les contraintes (Xi + Xj >= 1) pour tout (i,j) appartient à R (l'ensemble des rues entre emplacements)
+			// les contraintes (Xi + Xj >= 1) pour tout (i,j) appartient Ã  R (l'ensemble des rues entre emplacements)
 			for(int i = 0; i < n; i++) {
 				for(int j = 0; j < n; j++) {
 					if(adj.adjacent(i, j)) {
@@ -112,9 +112,9 @@ public class CameraSurveillance {
 			
 			simplexe.solve(); // lancer resolution
 			
-			// Afficher des résultat
-			System.out.println("\nVoici la valeur de la fonction objectif (Nombre des caméras qu'on va placé): "+ simplexe.getObjValue() + "\n");
-			System.out.println("Voici les valeurs vrai des variables de décision (les " + simplexe.getObjValue() + " emplacements des caméras): ") ;
+			// Afficher des rÃ©sultat
+			System.out.println("\nVoici la valeur de la fonction objectif (Nombre des camÃ©ras qu'on va placÃ©): "+ simplexe.getObjValue() + "\n");
+			System.out.println("Voici les valeurs vrai des variables de dÃ©cision (les " + simplexe.getObjValue() + " emplacements des camÃ©ras): ") ;
 			for (int i=0;i<n;i++) {
 				if(simplexe.getValue(place[i]) != 0.0) {
 					int k = i + 1;
@@ -122,7 +122,7 @@ public class CameraSurveillance {
 				}				
 			}
 		} catch (IloException e){
-			System.out.print("Exception levée " + e);
+			System.out.print("Exception levÃ©e " + e);
 		}
 	}
 }
