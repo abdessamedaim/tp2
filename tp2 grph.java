@@ -13,13 +13,13 @@ public class Graphe {
 		matriceAdj = new boolean[noeuds][noeuds];
 	}
 
-	// ajout d'arêtes entre deux noeuds
+	// ajout d'arÃªtes entre deux noeuds
 	public void ajoutArete(int i, int j) {
 		matriceAdj[i-1][j-1] = true;
 		matriceAdj[j-1][i-1] = true;
 	}
 	
-	// ajout d'arêtes entre une liste des noeuds
+	// ajout d'arÃªtes entre une liste des noeuds
 	public void ajoutAretes(int[] nodes) {
 		for(int i = 0; i < nodes.length; i++) {
 			for(int j = 0; j < nodes.length; j++) {
